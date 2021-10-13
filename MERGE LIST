@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define nl "\n"
+#define pb push_back
+#define ss second
+#define ff first
+using namespace std;
+ll p=1e9+7;
+ll ncr(ll n,ll r)
+{
+    ll arr[r+1]={0};
+    if(r>n-r)
+    r=n-r;
+    arr[0]=1;
+    for(ll i=1;i<=n;i++)
+    {
+        for(ll j=min(i,r);j>0;j--)
+        arr[j]=((arr[j-1]%p)+arr[j]%p)%p;
+    }
+    return arr[r];
+}
+int main() {
+   ll t;cin>>t;
+   while(t--)
+   {
+       ll n,m;
+       cin>>n>>m;
+       cout<<ncr(n+m,n)<<nl;
+   }
+}
