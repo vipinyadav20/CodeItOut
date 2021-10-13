@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define nl "\n"
+#define pb push_back
+#define ss second
+#define ff first
+using namespace std;
+ll p=1e9+7;
+ll ncr(ll n,ll r)
+{
+    ll arr[r+1]={0};
+    if(r>n-r)
+    r=n-r;
+    arr[0]=1;
+    for(ll i=1;i<=n;i++)
+    {
+        for(ll j=min(i,r);j>0;j--)
+        arr[j]=((arr[j-1]%p)+arr[j]%p)%p;
+    }
+    return arr[r];
+}
+int main() {
+     string s;cin>>s;
+     ll ans=0,h=0;
+     if(s.size()<4)
+     {
+         cout<<0;
+         return 0;
+     }
+     for(int i=0;i<s.size()-5;i++)
+     {
+         if(s[i]=='h'&&s[i+1]=='e'&&s[i+2]=='a'&&s[i+3]=='v'&&s[i+4]=='y')
+         h++;
+         else
+         if(s[i]=='m'&&s[i+1]=='e'&&s[i+2]=='t'&&s[i+3]=='a'&&s[i+4]=='l')
+         ans+=h;
+     }
+     cout<<ans<<nl;
+}
