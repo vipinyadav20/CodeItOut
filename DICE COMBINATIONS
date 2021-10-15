@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define nl "\n"
+#define pb push_back
+#define ss second
+#define ff first
+using namespace std;
+ll dp[1000001];
+ll p=1e9+7;
+ll dice(ll dp[],ll n)
+{
+    if(n<0)
+    return 0;
+    if(dp[n])
+    return dp[n];
+    if(n==0)
+    {
+        dp[n]=1;
+        return 1;
+    }
+    return dp[n]=(dice(dp,n-1)+dice(dp,n-2)+dice(dp,n-3)+dice(dp,n-4)+dice(dp,n-5)+dice(dp,n-6))%p;
+}
+int main() {
+    ll n;cin>>n;
+    cout<<dice(dp,n);
+}
